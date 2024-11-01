@@ -1,0 +1,631 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1b2a3a; /* Lightened background color */
+    color: #e0e0e0; /* Lightened text color */
+}
+
+header {
+    background: #2a2a2a; /* Slightly lighter header */
+    color: #e0f7fa; /* Light pastel text color for header */
+    padding: 10px 0;
+    position: fixed; /* Keeping the nav bar fixed */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative; /* Ensure the li is positioned for the hover effect */
+}
+
+nav ul li a {
+    color: #b0d4ff; /* Lighter pastel blue for menu links */
+    text-decoration: none;
+    padding: 5px 10px; /* Add some padding for a larger clickable area */
+    display: block; /* Make the anchor fill the li */
+}
+
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2); /* Light background on hover */
+    border-radius: 5px; /* Optional: Add rounded corners for a smoother look */
+    transition: background 0.3s ease; /* Smooth transition effect */
+}
+
+.container {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+    margin-top: 60px; /* To account for fixed header */
+    padding: 20px;
+}
+
+aside {
+    width: 250px;
+    margin-right: 20px; /* Space between aside and main content */
+    text-align: center; /* Center text in the aside */
+}
+
+.profile-pic {
+    width: 225px; /* 1.5 times the previous size */
+    height: 225px; /* Same as width for a circle */
+    border-radius: 50%; /* Makes the image circular */
+    border: 5px solid #ccc; /* Gray frame */
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+.personal-info {
+    background: rgba(255, 255, 255, 0.2); /* Lighter transparent background */
+    padding: 15px;
+    margin-top: 10px;
+    color: #d0d0d0; /* Light grey pastel text color */
+    text-align: center; /* Center text in personal info */
+    border-radius: 15px; /* Rounded corners for personal info box */
+}
+
+.links ul li {
+    display: inline; /* Make them horizontal */
+    margin-right: 15px; /* Space between icons */
+}
+
+.links ul li a {
+    color: #a0c4ff; /* Pastel blue for icons */
+    font-size: 20px; /* Adjust size as needed */
+    text-decoration: none; /* Remove underline */
+}
+
+.links ul li a:hover {
+    color: #e0f7fa; /* Change color on hover */
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    color: #d0d0d0; /* Light grey pastel text color */
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #1a1a1a; /* Darker style for footer */
+    color: #e0f7fa; /* Light pastel text color for footer */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.about-me-section {
+    padding: 15px; /* Padding for spacing inside the box */
+    margin-top: 60px; /* Increased margin to create more space above */
+    margin-left: 30px; /* Move the box a little to the right */
+    line-height: 1.6;
+    font-size: 18px;
+    color: #f0f0f0;
+    text-align: justify;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow for depth */
+}
+
+.about-me-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.about-me-section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.arrow-container {
+    margin-top: 15px; /* Space above the arrow */
+    display: flex;
+    justify-content: center; /* Center the arrow */
+    opacity: 1; /* Start visible */
+    transition: opacity 0.4s ease; /* Smooth transition for visibility */
+}
+
+.arrow {
+    font-size: 24px; /* Size of the arrow */
+    color: #a0c4ff; /* Match the color to your theme */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    animation: twinkle 1.5s infinite; /* Twinkling effect */
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1); /* Original size */
+    }
+    50% {
+        opacity: 0; /* Fully disappear */
+        transform: scale(0.8); /* Slightly shrink */
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em; /* Increase font size */
+    text-decoration: underline; /* Underline the title */
+    margin-bottom: 20px; /* Space below the title */
+    color: #e0f7fa; /* Color that fits with the scene */
+}
+
+article {
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    padding: 15px;
+    margin: 20px 0; /* Space between articles */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+article a {
+    color: #ffffff; /* Change the "Read more" link to white */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+}
+
+article a:hover {
+    color: #b0d4ff; /* Change color on hover for visibility */
+}
+
+.coming-soon {
+    text-align: center; /* Center the heading */
+    font-size: 2em; /* Adjust font size as needed */
+    background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #4b0082, #9400d3); /* Rainbow gradient */
+    background-size: 300%; /* Increase background size for smoother movement */
+    animation: rainbow 5s linear infinite; /* Rainbow animation */
+     -webkit-background-clip: text; /* Clip the background to the text */
+    -webkit-text-fill-color: transparent; /* Make the text color transparent to show the gradient */
+    filter: blur(1px); /* Optional: add a slight blur for a more party-like effect */
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }  /* Start position of the gradient */
+    100% { background-position: 100% 50%; } /* End position of the gradient */
+}
+
+.event {
+    padding: 15px; /* Padding for spacing inside the box */
+    margin: 60px auto; /* Center horizontally and add space above */
+    line-height: 1.6;
+    font-size: 18px;
+    color: #f0f0f0;
+    text-align: justify;
+    width: 100%; /* Use the full available width */
+    max-width: 600px; /* Maximum width to prevent it from getting too wide */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    overflow: hidden; /* Prevent overflow if content is too large */
+    opacity: 0;
+    transform: translateY(20px); /* Start lower */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.event a {
+    color: #f0f0f0; /* Link color */
+    text-decoration: underline; /* Underline the links */
+    opacity: 1;
+    transform: scale(1); /* Scale to normal size */
+}
+
+.event a:hover {
+    color: #ffffff; /* Optional: Change color on hover */
+}  
+ 
+.lectures-title {
+    margin-top: 100px; /* Adjust the value to move it further down */
+}
+
+.event.visible {
+    opacity: 1;
+    transform: translateY(0); /* Slide up to original position */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slightly larger shadow when visible */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.event:hover {
+    transform: scale(1.05); /* Scale up slightly */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+#particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to go through particles */
+    z-index: -1; /* Ensures it stays behind all other content */
+    overflow: hidden; /* Prevents scrollbars from appearing */
+}
+
+.particle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2); /* Soft white color */
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes floatSideways {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(5px); } /* Adjust for subtle or stronger effect */
+}
+
+.legal-info {
+    font-size: 0.8em; /* Smaller font size for legal info */
+    text-align: center; /* Center align */
+}
+
+.legal-link {
+    color: white; /* Change link color to white */
+    text-decoration: none; /* Remove underline */
+}
+
+.olympiad-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically (if needed) */
+    flex-direction: column; /* Stack items vertically */
+    margin: 0 auto; /* Center the container */
+    max-width: 800px; /* Set a max width for the container */
+    padding: 20px; /* Add some padding for spacing */
+}
+
+.olympiad-box {
+    line-height: 1.6;
+    font-size: 18px;
+    color: #f0f0f0;
+    text-align: justify;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 20px; /* Added margin to create space */
+}
+
+.contact-info {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    margin-top: 10px;
+    color: #d0d0d0;
+    text-align: center;
+    border-radius: 15px;
+    border: 5px solid #ffffff; /* Added white border for frame effect */
+}
+
+.icon-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    margin-right: 5px; /* Add some space between the icon and the text */
+}
+
+.faq-box {
+    line-height: 1.6;
+    font-size: 18px;
+    color: #f0f0f0;
+    text-align: justify;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    padding: 15px; /* Inner spacing */
+    margin-top: 20px; /* Space above the box */
+}
+
+details {
+    margin-bottom: 10px; /* Space between each FAQ */
+    border: 1px solid #ddd; /* Border around each FAQ box */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+}
+
+summary {
+    cursor: pointer; /* Change cursor on hover */
+    padding: 10px; /* Add some padding */
+    background-color: rgba(255, 255, 255, 0.2); /* Background color for the summary */
+    border: none; /* No border on the summary */
+    outline: none; /* Remove outline */
+    transition: background-color 0.3s ease; /* Transition for background color */
+}
+
+summary:hover {
+    background-color: rgba(255, 255, 255, 0.3); /* Change background on hover */
+}
+
+.faq-content {
+    max-height: 0; /* Start hidden */
+    overflow: hidden; /* Hide overflow */
+    transition: max-height 0.3s ease; /* Smooth transition */
+    padding: 0 10px; /* Padding for content */
+}
+
+details[open] .faq-content {
+    max-height: 100px; /* Set a max height for the open state */
+    padding: 10px 10px; /* Add padding for the open state */
+}
+
+.policies-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    padding: 20px; /* Add some padding around the container */
+}
+
+.policies-content {
+    width: 100%; /* Full width of the container */
+    max-width: 800px; /* Limit the maximum width */
+    text-align: center; /* Center the text inside the content */
+    line-height: 1.6; /* Improve readability */
+    font-size: 18px; /* Set font size */
+    color: #f0f0f0; /* Text color (common color) */
+    background: rgba(255, 255, 255, 0.1); /* Light background for the content (common color) */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    padding: 20px; /* Inner padding for content */
+}
+
+.kofi-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.kofi-widget img {
+    width: 180px; /* Increase the width from 120px to 140px */
+    transition: transform 0.2s;
+}
+
+.kofi-widget img:hover {
+    transform: scale(1.1);
+}
+
+.lang-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.links {
+    margin-left: -25px; /* Negative margin to shift left */
+}
+
+.new-lecture {
+    color: red;
+    font-weight: bold;
+    animation: flash 1s infinite alternate;
+}
+
+
+@keyframes flash {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Keyframes for fade-in with scale */
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframes for slide-in from bottom */
+@keyframes slideInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Keyframes for subtle bounce */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.box {
+    line-height: 1.6;
+    font-size: 18px;
+    color: #f0f0f0;
+    text-align: justify;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 20px; /* Added margin to create space */
+    margin-top: 20px;
+}
+
+h3 {
+    margin-bottom: 15px; /* Espacio bajo el título */
+    font-size: 1.5em; /* Tamaño de fuente del título */
+    text-decoration: underline;
+}
+
+.logo-container {
+    display: flex; /* Flexbox para disposición horizontal */
+    justify-content: center; /* Centrar contenido */
+    flex-wrap: wrap; /* Permitir ajuste de línea */
+}
+
+.olympiad-logo {
+    max-width: 100px; /* Tamaño máximo de los logos */
+    margin: 10px; /* Margen entre logos */
+}
+
+.olympiad-logo1 {
+    max-width: 100px; /* Tamaño máximo de los logos */
+    margin: 10px; /* Margen entre logos */
+    margin-top: 20px;
+}
+
+@keyframes slide {
+    0% { transform: translateX(100%); }
+    20% { transform: translateX(0); }
+    33% { transform: translateX(0); }
+    53% { transform: translateX(-100%); }
+    73% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Center align the "Competitions" title */
+#olympiad-logos h3 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.testimonial-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.testimonial {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    text-align: center;
+}
+
+.dots-container {
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+    bottom: 0;
+    display: flex; /* Align dots in a row */
+    justify-content: center; /* Center dots below the name */
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.1);;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    border: 0.5px solid #ffffff;
+    justify-content: center;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+.competition small {
+    display: block;
+    text-align: center;
+    font-size: 0.8em;
+    margin-top: 5px;
+    color: #666;
+    transform: translateX(-20px); 
+}
+
+.cmat {
+    margin-left: 40px;
+}
+/* General Box Styling */
+.olympiad-box, .contact-info, .box, .faq-box {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateY(20px); /* Start slightly below */
+}
+
+.olympiad-box.visible, .contact-info.visible, .box.visible, .faq-box.visible {
+    opacity: 1;
+    transform: translateY(0); /* Slide up to original position */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slightly larger shadow when visible */
+}
+
+
+/* Hover Effect */
+.olympiad-box:hover, 
+.contact-info:hover, 
+.box:hover, 
+.faq-box:hover {
+    transform: scale(1.05); /* Scale up slightly */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+/* Initial hidden state */
+aside {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Class to trigger the animation */
+.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.name {
+    text-decoration: underline;
+    color: inherit; /* Use current color */
+}
+
+.name:hover {
+    color: #007BFF; /* Change to your desired hover color */
+}
+
